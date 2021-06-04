@@ -5,9 +5,10 @@ import { withStyles, makeStyles } from '@material-ui/core/styles';
 
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
+
 const PrettoSlider = withStyles({
 	root: {
-		color: '#e0e0e0',
+		color: '#1907DB',
 		height: 8,
 		marginTop: 10,
 	},
@@ -15,6 +16,7 @@ const PrettoSlider = withStyles({
 		height: 24,
 		width: 24,
 		backgroundColor: '#fff',
+
 		border: '2px solid currentColor',
 		marginTop: -8,
 		marginLeft: -12,
@@ -24,7 +26,11 @@ const PrettoSlider = withStyles({
 	},
 	active: {},
 	valueLabel: {
+		color: '#fff',
 		left: 'calc(-50% + 4px)',
+		background: '#e0e0e0',
+		borderRadius: '50%',
+		display: 'none',
 	},
 	track: {
 		height: 8,
@@ -41,18 +47,28 @@ const Controls = () => {
 	const [BR, setBR] = useState(0);
 	const [SR, setSR] = useState(0);
 	const [ShadowColor, setShadowColor] = useState('rgba(0,0,0)');
-	const [opacity, setopacity] = useState(1);
+	const [opacity, setopacity] = useState(0.5);
 	const updateHRange = (e, data) => {
 		setHSL(data);
 	};
 	const updateVRange = (e, data) => {
 		setVSL(data);
 	};
+	const updateBRange = (e, data) => {
+		setBR(data);
+	};
+	const updateSRange = (e, data) => {
+		setSR(data);
+	};
+	const updateORange = (e, data) => {
+		setopacity(data);
+	};
 	const custStyle = {
 		display: 'flex',
 		justifyContent: 'space-between',
 	};
-	console.log(VSL);
+
+	console.log(BR);
 	return (
 		<div className='Controls'>
 			<Typography style={custStyle}>
@@ -61,25 +77,69 @@ const Controls = () => {
 
 			<PrettoSlider
 				valueLabelDisplay='auto'
-				aria-label='pretto slider'
-				onChange={git add.}
+				onChange={updateHRange}
 				value={HSL}
 				defaultValue={20}
 				max={Number('200')}
 				min={Number('-200')}
 			/>
 			<Typography style={custStyle}>
-				Horizontal Shadow Length :<Typography>{HSL}px</Typography>{' '}
+				Vertical Shadow Length :<Typography>{VSL}px</Typography>{' '}
 			</Typography>
 
 			<PrettoSlider
 				valueLabelDisplay='auto'
-				aria-label='pretto slider'
 				onChange={updateVRange}
 				value={VSL}
 				defaultValue={20}
 				max={Number('200')}
 				min={Number('-200')}
+			/>
+
+			<Typography style={custStyle}>
+				Blur Radius :<Typography>{BR}px</Typography>{' '}
+			</Typography>
+
+			<PrettoSlider
+				valueLabelDisplay='auto'
+				onChange={updateBRange}
+				value={BR}
+				defaultValue={20}
+				max={Number('200')}
+				min={Number('-200')}
+			/>
+
+			<Typography style={custStyle}>
+				Spread Radius :<Typography>{SR}px</Typography>{' '}
+			</Typography>
+
+			<PrettoSlider
+				valueLabelDisplay='auto'
+				onChange={updateSRange}
+				value={SR}
+				defaultValue={20}
+				max={Number('200')}
+				min={Number('-200')}
+			/>
+
+			<Typography style={custStyle} gutterBottom>
+				Shadow Color :<Typography>{ShadowColor}</Typography>{' '}
+			</Typography>
+			<input  type="color"  onChange={e=>{setShadowColor(e.target.value)}} value={ShadowColor} />
+
+
+			<Typography style={custStyle}>
+				Shadow Color Opacity :<Typography>{opacity}</Typography>{' '}
+			</Typography>
+
+			<PrettoSlider
+				valueLabelDisplay='auto'
+				onChange={updateORange}
+				value={opacity}
+				defaultValue={20}
+				step={0.01}
+				max={Number('1.0')}
+				min={Number('0.0')}
 			/>
 		</div>
 	);
