@@ -1,0 +1,9 @@
+.Controls {
+	margin: 0 3em;
+	margin-top: 3em;
+	width: 30vw;
+	height: 80vh;
+	border-radius: 10px;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+	padding: 20px;
+}
