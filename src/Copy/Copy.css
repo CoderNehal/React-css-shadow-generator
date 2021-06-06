@@ -1,7 +1,7 @@
 .Copy {
 	border: 1px solid #e5e5e5;
 	margin: 3em;
-
+	position: relative;
 	width: 38em;
 	height: auto;
 	min-height: 6em;
@@ -15,4 +15,10 @@
 }
 .Copy:hover {
 	color: #1907db;
+}
+
+.Copy #copyButton {
+	position: absolute;
+	top: 0;
+	right: 0;
 }
