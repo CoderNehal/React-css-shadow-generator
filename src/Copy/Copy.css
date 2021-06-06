@@ -1,0 +1,18 @@
+.Copy {
+	border: 1px solid #e5e5e5;
+	margin: 3em;
+
+	width: 38em;
+	height: auto;
+	min-height: 6em;
+	padding: 1em;
+	border-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+	line-height: 1.6;
+	display: flex;
+	align-items: center;
+	font-size: 1.1em;
+}
+.Copy:hover {
+	color: #1907db;
+}

@@ -1,7 +1,27 @@
-.LiveDiv{
-   
-	margin: 0 2em;
+.LiveDiv {
+	border: 1px solid #e5e5e5;
+	margin: 0 3em 0 3em;
 	margin-top: 3em;
-    width:55vw;
-    height:80vh;
+	width: 40em;
+	height: 25em;
+	padding: 2em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: -1;
+}
+.LiveDiv .box {
+	width: 80%;
+	height: 80%;
+	background-color: #fc2b61;
+	color: #fff;
+}
+
+
+@media (max-width: 546px) {
+	.LiveDiv {
+		padding: 0;
+		height: 20em;
+		width: 100%;
+	}
 }

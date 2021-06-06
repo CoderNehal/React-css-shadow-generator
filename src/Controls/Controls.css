@@ -10,3 +10,8 @@
 .Controls input[type='color'] {
 	margin-bottom: 1.5em;
 }
+@media (max-width:546px){
+	.Controls{
+		
+	}
+}

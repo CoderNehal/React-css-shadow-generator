@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Controls.css';
 import Slider from '@material-ui/core/Slider';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-
+import { withStyles } from '@material-ui/core/styles';
+import Switch from '@material-ui/core/Switch';
 import Typography from '@material-ui/core/Typography';
-import Tooltip from '@material-ui/core/Tooltip';
 
 const PrettoSlider = withStyles({
 	root: {
@@ -41,15 +40,41 @@ const PrettoSlider = withStyles({
 		borderRadius: 4,
 	},
 })(Slider);
-const Controls = () => {
-	const [HSL, setHSL] = useState(0);
-	const [VSL, setVSL] = useState(0);
-	const [BR, setBR] = useState(0);
+
+const PurpleSwitch = withStyles({
+	switchBase: {
+		color: '#1907DB',
+		'&$checked': {
+			color: '#1907DB',
+		},
+		'&$checked + $track': {
+			backgroundColor: '#1907DB',
+		},
+	},
+	checked: {},
+	track: {},
+})(Switch);
+const Controls = (props) => {
+	const [HSL, setHSL] = useState(10);
+	const [VSL, setVSL] = useState(10);
+	const [BR, setBR] = useState(5);
 	const [SR, setSR] = useState(0);
-	const [ShadowColor, setShadowColor] = useState('rgba(0,0,0)');
+	const [inset, setinset] = useState(false);
 	const [opacity, setopacity] = useState(0.5);
+	const [color, setcolor] = useState('rgba(0,0,0,0.5)');
+
+	useEffect(() => {
+		setcolor(`rgba(0,0,0,${opacity})`);
+
+		props.shadowProperties(
+			`${HSL}px ${VSL}px ${BR}px ${SR}px ${color} ${inset ? 'inset' : ''}`
+		);
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [BR, SR, HSL, VSL, opacity, color, inset]);
 	const updateHRange = (e, data) => {
 		setHSL(data);
+		// props.shadowProperties(`${HSL}px ${VSL}px ${BR}px ${SR}px ${ShadowColor}`);
 	};
 	const updateVRange = (e, data) => {
 		setVSL(data);
@@ -63,12 +88,15 @@ const Controls = () => {
 	const updateORange = (e, data) => {
 		setopacity(data);
 	};
+	const handleInset = () => {
+		setinset(!inset);
+	};
 	const custStyle = {
 		display: 'flex',
 		justifyContent: 'space-between',
 	};
+	console.log(inset);
 
-	console.log(BR);
 	return (
 		<div className='Controls'>
 			<Typography style={custStyle}>
@@ -105,8 +133,8 @@ const Controls = () => {
 				onChange={updateBRange}
 				value={BR}
 				defaultValue={20}
-				max={Number('200')}
-				min={Number('-200')}
+				max={Number('400')}
+				min={Number('0')}
 			/>
 
 			<Typography style={custStyle}>
@@ -122,12 +150,6 @@ const Controls = () => {
 				min={Number('-200')}
 			/>
 
-			<Typography style={custStyle} gutterBottom>
-				Shadow Color :<Typography>{ShadowColor}</Typography>{' '}
-			</Typography>
-			<input  type="color"  onChange={e=>{setShadowColor(e.target.value)}} value={ShadowColor} />
-
-
 			<Typography style={custStyle}>
 				Shadow Color Opacity :<Typography>{opacity}</Typography>{' '}
 			</Typography>
@@ -141,6 +163,11 @@ const Controls = () => {
 				max={Number('1.0')}
 				min={Number('0.0')}
 			/>
+
+			<Typography style={custStyle}>
+				Inset :
+				<PurpleSwitch checked={inset} onChange={handleInset} name='inset' />
+			</Typography>
 		</div>
 	);
 };
