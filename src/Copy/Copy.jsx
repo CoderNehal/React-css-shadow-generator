@@ -6,17 +6,27 @@ import Button from '@material-ui/core/Button';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 const Copy = (props) => {
 	const [state, setstate] = useState(false);
+	const [text, settext] = useState('copy');
+	const textToCopy = `box-shadow: ${props.shadowStyles}; 
+	 -webkit-box-shadow: ${props.shadowStyles}; 
+	 -moz-box-shadow: ${props.shadowStyles};`;
 	const handleCopy = () => {
-		//Look here
-		var copyText = document.getElementById('myInput');
+		var copyText = document.getElementById('copy');
+
 		copyText.select();
 		copyText.setSelectionRange(0, 99999);
 		document.execCommand('copy');
-		alert('Copied the text: ' + copyText.value);
+		settext('copied');
 		setstate(true);
 	};
 	return (
 		<div className='Copy'>
+			<input
+				type='text'
+				style={{ display: 'none' }}
+				id='copy'
+				value={textToCopy}
+			/>
 			{`box-shadow: ${props.shadowStyles};`} <br />
 			{`-webkit-box-shadow: ${props.shadowStyles};`} <br />
 			{`-moz-box-shadow: ${props.shadowStyles};`}
@@ -26,7 +36,7 @@ const Copy = (props) => {
 				id='copyButton'
 				onClick={handleCopy}
 				startIcon={state ? <AssignmentTurnedInIcon /> : <AssignmentIcon />}>
-				Copy
+				{text}
 			</Button>
 		</div>
 	);

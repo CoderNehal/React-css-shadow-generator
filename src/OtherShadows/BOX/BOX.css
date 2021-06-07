@@ -1,0 +1,12 @@
+.BOX {
+	width: 10em;
+	height: 10em;
+	margin: 3em;
+	border: none;
+	outline: none;
+	background: #fff;
+	border: 0.5px solid rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+	font-size: 1.1em;
+    color:rgba(0, 0, 0, 0.5);
+}

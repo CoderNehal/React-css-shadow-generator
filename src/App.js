@@ -13,6 +13,7 @@ import Controls from './Controls/Controls';
 import LiveDiv from './LiveDiv/LiveDiv';
 import AboutUs from './AboutUs/AboutUs';
 import Copy from './Copy/Copy';
+import OtherShadows from './OtherShadows/OtherShadows';
 const useStyles = makeStyles((theme) => ({
 	root: {
 		displa: 'flex',
@@ -54,7 +55,7 @@ const App = () => {
 							color='inherit'
 							aria-label='menu'></IconButton>
 						<Typography variant='h5' className={classes.white}>
-							CSS SHADOW GENERATOR
+							CSS BOX SHADOW GENERATOR
 						</Typography>
 					</Toolbar>
 				</AppBar>
@@ -65,6 +66,8 @@ const App = () => {
 					<Copy shadowStyles={state} />
 					
 				</div>
+
+				<OtherShadows />
 			</ThemeProvider>
 		</div>
 	);
