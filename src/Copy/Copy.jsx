@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Copy.css';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import Button from '@material-ui/core/Button';
-
+import copy from 'copy-to-clipboard';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 const Copy = (props) => {
 	const [state, setstate] = useState(false);
@@ -11,11 +11,7 @@ const Copy = (props) => {
 	 -webkit-box-shadow: ${props.shadowStyles}; 
 	 -moz-box-shadow: ${props.shadowStyles};`;
 	const handleCopy = () => {
-		var copyText = document.getElementById('copy');
-
-		copyText.select();
-		copyText.setSelectionRange(0, 99999);
-		document.execCommand('copy');
+		copy(textToCopy);
 		settext('copied');
 		setstate(true);
 	};

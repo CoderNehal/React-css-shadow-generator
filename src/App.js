@@ -14,6 +14,7 @@ import LiveDiv from './LiveDiv/LiveDiv';
 import AboutUs from './AboutUs/AboutUs';
 import Copy from './Copy/Copy';
 import OtherShadows from './OtherShadows/OtherShadows';
+import Footer from './Footer/Footer';
 const useStyles = makeStyles((theme) => ({
 	root: {
 		displa: 'flex',
@@ -30,13 +31,13 @@ const useStyles = makeStyles((theme) => ({
 const theme = createMuiTheme({
 	palette: {
 		primary: {
-			main: '#ADD8E6',
+			main: '#4C3FE0',
 		},
 	},
 });
 const App = () => {
 	const [state, setstate] = useState(null);
-	
+	const [noRenderPlz, setnoRenderPlz] = useState('ok')
 	const classes = useStyles();
 	const handleShadow = (shadowData) => {
 		
@@ -62,12 +63,13 @@ const App = () => {
 				<div className='Main-Container'>
 					<Controls shadowProperties={handleShadow}  />
 					<LiveDiv shadowStyles={state} />
-					<AboutUs />
+					<AboutUs noRenderPlz={noRenderPlz} />
 					<Copy shadowStyles={state} />
 					
 				</div>
 
-				<OtherShadows />
+				<OtherShadows noRenderPlz={noRenderPlz} />
+				<Footer />
 			</ThemeProvider>
 		</div>
 	);

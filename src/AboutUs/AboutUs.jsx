@@ -9,4 +9,4 @@ for more tools like this visit <a href="https://github.com/CoderNehal">here</a>
     </div>
 }
 
-export default AboutUs
+export default React.memo(AboutUs)

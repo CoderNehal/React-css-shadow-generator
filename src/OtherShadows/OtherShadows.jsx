@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import './OtherShadows.css';
 import Typography from '@material-ui/core/Typography';
 import BOX from './BOX/BOX';
@@ -63,6 +63,7 @@ const OtherShadows = () => {
 		
 		
 	];
+	
 	return (
 		<div className='OtherShadows'>
 			<div className='Heading'>
@@ -84,4 +85,4 @@ const OtherShadows = () => {
 	);
 };
 
-export default OtherShadows;
+export default React.memo(OtherShadows);
