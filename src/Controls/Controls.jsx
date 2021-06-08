@@ -108,72 +108,72 @@ const Controls = (props) => {
 					duration: 1.6,
 				},
 			}}>
-			<Typography style={custStyle}>
-				Horizontal Shadow Length :<Typography>{HSL}px</Typography>{' '}
+			<Typography component={'span'} style={custStyle}>
+				Horizontal Shadow Length :<Typography component={'span'}>{HSL}px</Typography>{' '}
 			</Typography>
 
 			<PrettoSlider
 				valueLabelDisplay='auto'
 				onChange={updateHRange}
-				value={HSL}
+				
 				defaultValue={20}
 				max={Number('200')}
 				min={Number('-200')}
 			/>
-			<Typography style={custStyle}>
-				Vertical Shadow Length :<Typography>{VSL}px</Typography>{' '}
+			<Typography component={'span'} style={custStyle}>
+				Vertical Shadow Length :<Typography component={'span'}>{VSL}px</Typography>{' '}
 			</Typography>
 
 			<PrettoSlider
 				valueLabelDisplay='auto'
 				onChange={updateVRange}
-				value={VSL}
+			
 				defaultValue={20}
 				max={Number('200')}
 				min={Number('-200')}
 			/>
 
-			<Typography style={custStyle}>
-				Blur Radius :<Typography>{BR}px</Typography>{' '}
+			<Typography component={'span'} style={custStyle}>
+				Blur Radius :<Typography component={'span'}>{BR}px</Typography>{' '}
 			</Typography>
 
 			<PrettoSlider
 				valueLabelDisplay='auto'
 				onChange={updateBRange}
-				value={BR}
+				
 				defaultValue={20}
 				max={Number('400')}
 				min={Number('0')}
 			/>
 
-			<Typography style={custStyle}>
-				Spread Radius :<Typography>{SR}px</Typography>{' '}
+			<Typography component={'span'} style={custStyle}>
+				Spread Radius :<Typography component={'span'}>{SR}px</Typography>{' '}
 			</Typography>
 
 			<PrettoSlider
 				valueLabelDisplay='auto'
 				onChange={updateSRange}
-				value={SR}
+				
 				defaultValue={20}
 				max={Number('200')}
 				min={Number('-200')}
 			/>
 
-			<Typography style={custStyle}>
-				Shadow Color Opacity :<Typography>{opacity}</Typography>{' '}
+			<Typography component={'span'} style={custStyle}>
+				Shadow Color Opacity :<Typography component={'span'}>{opacity}</Typography>{' '}
 			</Typography>
 
 			<PrettoSlider
 				valueLabelDisplay='auto'
 				onChange={updateORange}
-				value={opacity}
+				
 				defaultValue={20}
 				step={0.01}
 				max={Number('1.0')}
 				min={Number('0.0')}
 			/>
 
-			<Typography style={custStyle}>
+			<Typography component={'span'} style={custStyle}>
 				Inset :
 				<PurpleSwitch checked={inset} onChange={handleInset} name='inset' />
 			</Typography>

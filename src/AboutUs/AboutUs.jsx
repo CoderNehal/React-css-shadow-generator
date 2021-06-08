@@ -11,6 +11,7 @@ const AboutUs = () => {
 				opacity: 1,
 				transition: {
 					duration: 1.6,
+					delay: 0.6,
 				},
 			}}>
 			<span>CSS BOX SHADOW GENERATOR</span> helps you quickly generate

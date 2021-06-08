@@ -1,4 +1,4 @@
-import React,{ useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import {
 	createMuiTheme,
@@ -15,6 +15,8 @@ import AboutUs from './AboutUs/AboutUs';
 import Copy from './Copy/Copy';
 import OtherShadows from './OtherShadows/OtherShadows';
 import Footer from './Footer/Footer';
+import { useInView } from 'react-intersection-observer';
+import { motion, useAnimation } from 'framer-motion';
 const useStyles = makeStyles((theme) => ({
 	root: {
 		displa: 'flex',
@@ -37,13 +39,35 @@ const theme = createMuiTheme({
 });
 const App = () => {
 	const [state, setstate] = useState(null);
-	const [noRenderPlz, setnoRenderPlz] = useState('ok')
+	const [noRenderPlz, setnoRenderPlz] = useState(1);
 	const classes = useStyles();
-	const handleShadow = (shadowData) => {
+	const { ref, inView } = useInView({
+		threshold: 0,
+	});
+	const animation = useAnimation();
+	useEffect(() => {
 		
-		setstate(shadowData)
+		if (inView) {
+			animation.start({
+				y: 0,
+				opacity: 1,
+				transition: { duration: 1 },
+			});
+			setnoRenderPlz(noRenderPlz + 1);
+		}
+		if (!inView) {
+			animation.stop({
+				y: 100,
+				opacity: 0,
+				transition: { duration: 1.6 },
+			});
+		}
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [inView]);
+	const handleShadow = (shadowData) => {
+		setstate(shadowData);
 	};
-	
 
 	return (
 		<div className={classes.root}>
@@ -61,14 +85,18 @@ const App = () => {
 					</Toolbar>
 				</AppBar>
 				<div className='Main-Container'>
-					<Controls shadowProperties={handleShadow}  />
+					<Controls shadowProperties={handleShadow} />
 					<LiveDiv shadowStyles={state} />
 					<AboutUs noRenderPlz={noRenderPlz} />
 					<Copy shadowStyles={state} />
-					
 				</div>
+				<motion.div
+					initial={{ opacity: 0, y: 100 }}
+					ref={ref}
+					animate={animation}>
+					<OtherShadows noRenderPlz={noRenderPlz} />
+				</motion.div>
 
-				<OtherShadows noRenderPlz={noRenderPlz} />
 				<Footer />
 			</ThemeProvider>
 		</div>

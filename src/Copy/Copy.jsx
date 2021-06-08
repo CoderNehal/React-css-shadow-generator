@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Copy.css';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import Button from '@material-ui/core/Button';
@@ -16,6 +16,9 @@ const Copy = (props) => {
 		settext('copied');
 		setstate(true);
 	};
+	useEffect(() => {
+		setstate(false);
+	}, [props]);
 	return (
 		<motion.div
 			className='Copy'
@@ -25,6 +28,7 @@ const Copy = (props) => {
 				opacity: 1,
 				transition: {
 					duration: 1.6,
+					delay: 0.6,
 				},
 			}}>
 			<input
@@ -32,6 +36,7 @@ const Copy = (props) => {
 				style={{ display: 'none' }}
 				id='copy'
 				value={textToCopy}
+				readOnly
 			/>
 			{`box-shadow: ${props.shadowStyles};`} <br />
 			{`-webkit-box-shadow: ${props.shadowStyles};`} <br />
