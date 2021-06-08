@@ -4,6 +4,7 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 import Button from '@material-ui/core/Button';
 import copy from 'copy-to-clipboard';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
+import { motion } from 'framer-motion';
 const Copy = (props) => {
 	const [state, setstate] = useState(false);
 	const [text, settext] = useState('copy');
@@ -16,7 +17,16 @@ const Copy = (props) => {
 		setstate(true);
 	};
 	return (
-		<div className='Copy'>
+		<motion.div
+			className='Copy'
+			initial={{ x: 100, opacity: 0 }}
+			animate={{
+				x: 0,
+				opacity: 1,
+				transition: {
+					duration: 1.6,
+				},
+			}}>
 			<input
 				type='text'
 				style={{ display: 'none' }}
@@ -34,7 +44,7 @@ const Copy = (props) => {
 				startIcon={state ? <AssignmentTurnedInIcon /> : <AssignmentIcon />}>
 				{text}
 			</Button>
-		</div>
+		</motion.div>
 	);
 };
 

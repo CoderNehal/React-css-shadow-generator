@@ -6,12 +6,12 @@
 	border-radius: 10px;
 	box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
 	padding: 20px;
+	
 }
 .Controls input[type='color'] {
 	margin-bottom: 1.5em;
 }
-@media (max-width:546px){
-	.Controls{
-		
+@media (max-width: 546px) {
+	.Controls {
 	}
 }

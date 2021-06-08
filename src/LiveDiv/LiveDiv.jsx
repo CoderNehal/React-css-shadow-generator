@@ -1,8 +1,16 @@
 import React from 'react';
 import './LiveDiv.css';
+import { motion } from 'framer-motion';
 const LiveDiv = (props) => {
 	return (
-		<div className='LiveDiv'>
+		<motion.div className='LiveDiv'initial={{ x: 100, opacity: 0 }}
+		animate={{
+			x: 0,
+			opacity: 1,
+			transition: {
+				duration: 1.6,
+			},
+		}}>
 			<div
 				className='box'
 				style={{
@@ -12,7 +20,7 @@ const LiveDiv = (props) => {
 				{props.shadowStyles}
 				{props.opacity}
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

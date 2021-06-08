@@ -4,7 +4,7 @@ import Slider from '@material-ui/core/Slider';
 import { withStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
 import Typography from '@material-ui/core/Typography';
-
+import { motion } from 'framer-motion';
 const PrettoSlider = withStyles({
 	root: {
 		color: '#1907DB',
@@ -95,10 +95,19 @@ const Controls = (props) => {
 		display: 'flex',
 		justifyContent: 'space-between',
 	};
-	console.log(inset);
+	
 
 	return (
-		<div className='Controls'>
+		<motion.div
+			className='Controls'
+			initial={{ x: -100, opacity: 0 }}
+			animate={{
+				x: 0,
+				opacity: 1,
+				transition: {
+					duration: 1.6,
+				},
+			}}>
 			<Typography style={custStyle}>
 				Horizontal Shadow Length :<Typography>{HSL}px</Typography>{' '}
 			</Typography>
@@ -168,7 +177,7 @@ const Controls = (props) => {
 				Inset :
 				<PurpleSwitch checked={inset} onChange={handleInset} name='inset' />
 			</Typography>
-		</div>
+		</motion.div>
 	);
 };
 
